@@ -34,9 +34,6 @@ ENV TZ=America/Los_Angeles
 # Copy hello-cron file to the cron.d directory
 COPY --chown=steam:steam  src/cron/auto-update /etc/cron.d/auto-update
 
-# Give execution rights on the cron job
-RUN chmod 0644 /etc/cron.d/auto-update
-
 # Apply cron job
 RUN crontab /etc/cron.d/auto-update
 
@@ -48,9 +45,9 @@ ENV PUBLIC "1"
 ENV PASSWORD "12345"
 ENV AUTO_UPDATE "0"
 
-COPY --chmod=755 ./src/scripts/*.sh /home/steam/scripts/
-COPY --chmod=755  ./src/scripts/entrypoint.sh /entrypoint.sh
-COPY --from=RustBuilder  --chmod=755 /data/odin/target/release /home/steam/.odin
+COPY ./src/scripts/*.sh /home/steam/scripts/
+COPY ./src/scripts/entrypoint.sh /entrypoint.sh
+COPY --from=RustBuilder /data/odin/target/release /home/steam/.odin
 
 #WORKDIR /home/steam/valheim
 
