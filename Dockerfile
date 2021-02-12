@@ -1,7 +1,7 @@
 # ------------------ #
 # -- Odin Builder -- #
 # ------------------ #
-FROM mbround18/valheim-odin:latest as RustBuilder
+FROM stealthii/valheim-odin:latest as RustBuilder
 
 # ----------------------- #
 # -- Script Formatting -- #
