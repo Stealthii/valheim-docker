@@ -3,18 +3,6 @@
 # ------------------ #
 FROM stealthii/valheim-odin:latest as RustBuilder
 
-# ----------------------- #
-# -- Script Formatting -- #
-# ----------------------- #
-
-FROM alpine:latest as ScriptSanitize
-
-WORKDIR /data/scripts
-COPY src/scripts/* ./
-
-RUN apk add dos2unix  --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted \
-    && dos2unix /data/scripts/**
-
 # --------------- #
 # -- Steam CMD -- #
 # --------------- #
